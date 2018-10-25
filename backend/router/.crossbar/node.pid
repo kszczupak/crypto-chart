@@ -1,0 +1,21 @@
+{
+    "pid": 8708, 
+    "argv": [
+        "C:\\ProgramData\\Anaconda3\\Scripts\\crossbar", 
+        "start", 
+        "--cbdir", 
+        "E:/Moje Pliki/Programy/CryptoChart/backend/router/.crossbar"
+    ], 
+    "options": {
+        "reactor": null, 
+        "command": "start", 
+        "cbdir": "E:\\Moje Pliki\\Programy\\CryptoChart\\backend\\router\\.crossbar", 
+        "config": "config.json", 
+        "personality": "community", 
+        "logdir": null, 
+        "logtofile": false, 
+        "loglevel": "info", 
+        "colour": false, 
+        "logformat": "standard"
+    }
+}

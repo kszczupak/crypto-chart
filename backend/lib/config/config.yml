@@ -1,0 +1,26 @@
+redis:
+    host: 127.0.0.1
+    port: 6379
+    db: 0
+
+reddit:
+    username: "SirSwiniak"
+    password: "5tC^2ggxooWQ6Wg$"
+    secret: "BwSQVeKzyDXPXajuWujsQJNGJfo"
+    app_id: "Tx5kaavFynx7Nw"
+    user_agent: "My User Agent"
+    crypto_subreddit:
+        name: "CryptoCurrency"
+
+database:
+    provider: "sqlite"
+    filename: "databases/crypto_posts.sqlite"
+
+crossbar:
+    host: 127.0.0.1
+    port: 8080
+    realm: crypto_chart
+    config_path: "E:/Moje Pliki/Programy/CryptoChart/backend/router/.crossbar"
+    auth:
+        username: user
+        password: 1234
