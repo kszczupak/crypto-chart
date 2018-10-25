@@ -1,0 +1,12 @@
+{
+  "crossbar": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "realm": "crypto_chart",
+    "auth": {
+      "username": "user",
+      "password": "1234"
+    },
+    "topic": "AISAAC_MAZE"
+  }
+}

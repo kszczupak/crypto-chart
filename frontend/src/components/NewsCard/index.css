@@ -1,0 +1,25 @@
+.News-title {
+  margin-bottom: 16px;
+}
+
+.News-card {
+  min-width: 20%;
+  max-width: 40%;
+  background-color: azure !important;
+  margin: 0px auto 10px;
+  cursor: pointer;
+}
+
+.News-bullet {
+  display: inline-block;
+  margin: 0px 2px;
+  transform: scale(0.8);
+}
+
+.News-pos {
+  margin-bottom: 12px;
+}
+
+.News-image {
+  margin-left: 10px;
+}
