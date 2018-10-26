@@ -4,16 +4,17 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import grey from '@material-ui/core/colors/grey';
 import './index.css';
-import NewsCard from '../NewsCard/index';
-import NewsList from '../../containers/NewsList/index';
-import NewsStore from '../../stores/NewsStore';
-import DataRangeStore from '../../stores/DataRangeStore';
-import AppActions from '../../actions/Actions';
-import DataRangePicker from '../DataRangePicker';
+// import NewsCard from '../NewsCard/index';
+// import NewsList from '../../containers/NewsList/index';
+// import NewsStore from '../../stores/NewsStore';
+// import DataRangeStore from '../../stores/DataRangeStore';
+// import AppActions from '../../actions/Actions';
+// import DataRangePicker from '../DataRangePicker';
 import DataRangeContainer from './../../containers/DataRangeContainer/index';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NewsModal from '../NewsModal';
+import { DataRangePickerContainer } from './../../containers/DataRangePickerContainer';
 
 const styles = theme => ({
   header: {
@@ -58,12 +59,13 @@ class App extends Component {
             Crypto News
           </Typography>
         </header>
-        <DataRangePicker />
+        <DataRangePickerContainer />
         <Grid container justify="center">
           <Button onClick={this.handleOpen} variant="contained">
             FETCH NEWS
           </Button>
         </Grid>
+        <DataRangeContainer />
         <NewsModal open={this.state.newsModalOpen} onClose={this.handleClose} />
         {/* <div>
           <NewsList />

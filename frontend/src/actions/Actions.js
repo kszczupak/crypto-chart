@@ -69,4 +69,13 @@ const Actions = {
   }
 };
 
+export const selectStartDate = startDate => ({
+  type: ActionTypes.START_DATE_SELECTED,
+  startDate
+});
+
+export const selectEndDate = endDate => ({
+  type: ActionTypes.END_DATE_SELECTED,
+  endDate
+});
 export default Actions;

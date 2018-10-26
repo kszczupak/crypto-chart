@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import AppActions from '../../actions/Actions';
+// import AppActions from '../../actions/Actions';
 
 const styles = theme => ({
   root: {
@@ -30,23 +30,25 @@ class DataRangePicker extends Component {
     this.defaultEndDate = '2017-05-25';
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // Send default dates to store
-    AppActions.selectStartDate(this.defaultStartDate);
-    AppActions.selectEndDate(this.defaultEndDate);
+    this.props.selectStartDate(this.defaultStartDate);
+    this.props.selectEndDate(this.defaultEndDate);
   }
 
   handleStartDateSelect = event => {
     // ToDo Convert to 'my' date form
-    AppActions.selectStartDate(event.target.value);
+    this.props.selectStartDate(event.target.value);
   };
 
   handleEndDateSelect = event => {
     // ToDo Convert to 'my' date form
-    AppActions.selectEndDate(event.target.value);
+    this.props.selectEndDate(event.target.value);
   };
 
   render() {
+    console.log(this.props);
+
     const { classes } = this.props;
     return (
       <div className={classes.root}>
