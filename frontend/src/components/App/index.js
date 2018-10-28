@@ -8,13 +8,14 @@ import './index.css';
 // import NewsList from '../../containers/NewsList/index';
 // import NewsStore from '../../stores/NewsStore';
 // import DataRangeStore from '../../stores/DataRangeStore';
-// import AppActions from '../../actions/Actions';
+// import { fetchNews } from '../../actions/Actions';
 // import DataRangePicker from '../DataRangePicker';
 import DataRangeContainer from './../../containers/DataRangeContainer/index';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import NewsModal from '../NewsModal';
+// import NewsModalContainer from '../NewsModal';
 import { DataRangePickerContainer } from './../../containers/DataRangePickerContainer';
+import { NewsModalContainer } from './../../containers/NewsModalContainer';
 
 const styles = theme => ({
   header: {
@@ -37,11 +38,12 @@ class App extends Component {
     // AppActions.fetchNews('bitcoin', '1/1/2017', '1/2/2017');
   }
 
-  handleOpen = () => {
+  handleFetchNewsButton = () => {
+    this.props.fetchNews();
     this.setState({ newsModalOpen: true });
   };
 
-  handleClose = () => {
+  handleNewsModalClose = () => {
     this.setState({ newsModalOpen: false });
   };
 
@@ -61,15 +63,15 @@ class App extends Component {
         </header>
         <DataRangePickerContainer />
         <Grid container justify="center">
-          <Button onClick={this.handleOpen} variant="contained">
+          <Button onClick={this.handleFetchNewsButton} variant="contained">
             FETCH NEWS
           </Button>
         </Grid>
         <DataRangeContainer />
-        <NewsModal open={this.state.newsModalOpen} onClose={this.handleClose} />
-        {/* <div>
-          <NewsList />
-        </div> */}
+        <NewsModalContainer
+          open={this.state.newsModalOpen}
+          onClose={this.handleNewsModalClose}
+        />
       </div>
     );
   }

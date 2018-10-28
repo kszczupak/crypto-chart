@@ -1,5 +1,5 @@
 import ActionTypes from './ActionTypes';
-import AppDispatcher from '../dispatcher/AppDispatcher';
+// import AppDispatcher from '../dispatcher/AppDispatcher';
 import BackendAPI from '../api/BackendAPI';
 
 const testingNews = [
@@ -27,47 +27,47 @@ const testingNews = [
   }
 ];
 
-const Actions = {
-  fetchNews(query, startDate, endDate) {
-    // Maybe change this logic to function/decorator if it will be often repeated
-    if (BackendAPI.backendReady()) {
-      AppDispatcher.dispatchAsync(
-        BackendAPI.fetchNews(query, startDate, endDate),
-        {
-          request: ActionTypes.FETCH_NEWS_START,
-          success: ActionTypes.FETCH_NEWS_SUCCESS,
-          failure: ActionTypes.FETCH_NEWS_ERROR
-        }
-      );
-    } else {
-      // Need to add some kind of a limit to prevent infinite calls
-      setTimeout(() => {
-        this.fetchNews(query, startDate, endDate);
-      }, 200);
-    }
-  },
-  testing_fetchNews() {
-    AppDispatcher.dispatch({
-      type: ActionTypes.FETCH_NEWS_START
-    });
-    AppDispatcher.dispatch({
-      type: ActionTypes.FETCH_NEWS_SUCCESS,
-      payload: JSON.stringify(testingNews)
-    });
-  },
-  selectStartDate(date) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.START_DATE_SELECTED,
-      payload: date
-    });
-  },
-  selectEndDate(date) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.END_DATE_SELECTED,
-      payload: date
-    });
-  }
-};
+// const Actions = {
+//   fetchNews(query, startDate, endDate) {
+//     // Maybe change this logic to function/decorator if it will be often repeated
+//     if (BackendAPI.backendReady()) {
+//       AppDispatcher.dispatchAsync(
+//         BackendAPI.fetchNews(query, startDate, endDate),
+//         {
+//           request: ActionTypes.FETCH_NEWS_START,
+//           success: ActionTypes.FETCH_NEWS_SUCCESS,
+//           failure: ActionTypes.FETCH_NEWS_ERROR
+//         }
+//       );
+//     } else {
+//       // Need to add some kind of a limit to prevent infinite calls
+//       setTimeout(() => {
+//         this.fetchNews(query, startDate, endDate);
+//       }, 200);
+//     }
+//   },
+//   testing_fetchNews() {
+//     AppDispatcher.dispatch({
+//       type: ActionTypes.FETCH_NEWS_START
+//     });
+//     AppDispatcher.dispatch({
+//       type: ActionTypes.FETCH_NEWS_SUCCESS,
+//       payload: JSON.stringify(testingNews)
+//     });
+//   },
+//   selectStartDate(date) {
+//     AppDispatcher.dispatch({
+//       type: ActionTypes.START_DATE_SELECTED,
+//       payload: date
+//     });
+//   },
+//   selectEndDate(date) {
+//     AppDispatcher.dispatch({
+//       type: ActionTypes.END_DATE_SELECTED,
+//       payload: date
+//     });
+//   }
+// };
 
 export const selectStartDate = startDate => ({
   type: ActionTypes.START_DATE_SELECTED,
@@ -78,4 +78,53 @@ export const selectEndDate = endDate => ({
   type: ActionTypes.END_DATE_SELECTED,
   endDate
 });
-export default Actions;
+
+export const startFetchingNews = () => ({
+  type: ActionTypes.FETCH_NEWS_START
+});
+
+export const newsFetched = news => ({
+  type: ActionTypes.FETCH_NEWS_SUCCESS,
+  news
+});
+
+export const errorOnNewsFetching = error => ({
+  type: ActionTypes.FETCH_NEWS_ERROR,
+  error
+});
+
+export const fetchNews = () => (dispatch, getState) => {
+  const query = 'bitcoin';
+
+  if (!BackendAPI.backendReady())
+    return dispatch(
+      errorOnNewsFetching('Backend not ready yet! Operation failed')
+    );
+
+  dispatch(startFetchingNews());
+
+  const { startDate, endDate } = getState().dataRange;
+
+  // Conversion to Json may be done here
+  return BackendAPI.fetchNews(query, startDate, endDate).then(response =>
+    dispatch(newsFetched(response), error =>
+      dispatch(errorOnNewsFetching(error))
+    )
+  );
+
+  //   AppDispatcher.dispatchAsync(
+  //     BackendAPI.fetchNews(query, startDate, endDate),
+  //     {
+  //       request: ActionTypes.FETCH_NEWS_START,
+  //       success: ActionTypes.FETCH_NEWS_SUCCESS,
+  //       failure: ActionTypes.FETCH_NEWS_ERROR
+  //     }
+  //   );
+  // } else {
+  //   // Need to add some kind of a limit to prevent infinite calls
+  //   setTimeout(() => {
+  //     this.fetchNews(query, startDate, endDate);
+  //   }, 200);
+  // }
+};
+// export default Actions;
