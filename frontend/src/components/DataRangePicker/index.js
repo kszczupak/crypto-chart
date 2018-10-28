@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-// import AppActions from '../../actions/Actions';
 
 const styles = theme => ({
   root: {
@@ -37,12 +36,10 @@ class DataRangePicker extends Component {
   }
 
   handleStartDateSelect = event => {
-    // ToDo Convert to 'my' date form
     this.props.selectStartDate(event.target.value);
   };
 
   handleEndDateSelect = event => {
-    // ToDo Convert to 'my' date form
     this.props.selectEndDate(event.target.value);
   };
 

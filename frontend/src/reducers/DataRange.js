@@ -7,8 +7,6 @@ const initialState = {
 
 //y-m-d -> m/d/y
 const convertDate = date => {
-  console.log(date);
-
   const [year, month, day] = date.split('-');
 
   return `${month}/${day}/${year}`;

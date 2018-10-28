@@ -1,5 +1,4 @@
 import ActionTypes from './ActionTypes';
-// import AppDispatcher from '../dispatcher/AppDispatcher';
 import BackendAPI from '../api/BackendAPI';
 
 const testingNews = [
@@ -26,48 +25,6 @@ const testingNews = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK3u5cYOaLK-39kp1dnit7CV0zc-oisrTszSor9MM-PRK7W4whMtAmjr8uUXQ9xZiMufDSvLq'
   }
 ];
-
-// const Actions = {
-//   fetchNews(query, startDate, endDate) {
-//     // Maybe change this logic to function/decorator if it will be often repeated
-//     if (BackendAPI.backendReady()) {
-//       AppDispatcher.dispatchAsync(
-//         BackendAPI.fetchNews(query, startDate, endDate),
-//         {
-//           request: ActionTypes.FETCH_NEWS_START,
-//           success: ActionTypes.FETCH_NEWS_SUCCESS,
-//           failure: ActionTypes.FETCH_NEWS_ERROR
-//         }
-//       );
-//     } else {
-//       // Need to add some kind of a limit to prevent infinite calls
-//       setTimeout(() => {
-//         this.fetchNews(query, startDate, endDate);
-//       }, 200);
-//     }
-//   },
-//   testing_fetchNews() {
-//     AppDispatcher.dispatch({
-//       type: ActionTypes.FETCH_NEWS_START
-//     });
-//     AppDispatcher.dispatch({
-//       type: ActionTypes.FETCH_NEWS_SUCCESS,
-//       payload: JSON.stringify(testingNews)
-//     });
-//   },
-//   selectStartDate(date) {
-//     AppDispatcher.dispatch({
-//       type: ActionTypes.START_DATE_SELECTED,
-//       payload: date
-//     });
-//   },
-//   selectEndDate(date) {
-//     AppDispatcher.dispatch({
-//       type: ActionTypes.END_DATE_SELECTED,
-//       payload: date
-//     });
-//   }
-// };
 
 export const selectStartDate = startDate => ({
   type: ActionTypes.START_DATE_SELECTED,
