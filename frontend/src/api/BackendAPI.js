@@ -1,5 +1,7 @@
 import autobahn from 'autobahn';
 import config from '../config.json';
+import { initiateWAMP_Connection } from './../actions';
+import { successfulWAMP_Connection } from './../actions';
 
 class WAMPClient {
   constructor() {
@@ -7,6 +9,16 @@ class WAMPClient {
       // If already initialized, return
       return;
     }
+
+    // Wyrzuca blad poniewaz nie mozna zwracany jest tylko obiekt ktory nie jest dispatchowany
+    // Ogolnie podejscie do implementacji klienta WAMP w redux jest w tym przypadku zle i musze go zmienic
+    // Calosc obslugi klienta powinna byc zrobiona z wykorzystaniem akcji redux, tzn
+    // przykladowo otwarcie sesji powinno byc asynchroniczna akcja redux openWampSession
+    // ktora to w trakcie wykonywania rozsylalaby (po przez dispatch) akcje statyczne
+    // np. connectionInitiated, connectionCompleted itp; dzieki temu calosc pracy WAMP mozna by
+    // kontrolowac w reducerach
+    // dodatkowo globalna zmienna z sessja wamp moze byc trzymana we store
+    initiateWAMP_Connection();
 
     this.WAMPConnection = null;
     this.WAMPSession = { isOpen: null };
@@ -33,6 +45,7 @@ class WAMPClient {
     this.WAMPConnection.onopen = session => {
       this.WAMPSession = session;
       this.sessionReady = true;
+      successfulWAMP_Connection();
     };
 
     this.WAMPConnection.open();

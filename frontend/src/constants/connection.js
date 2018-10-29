@@ -1,0 +1,6 @@
+export const connectionState = {
+  CONNECTING: 'CONNECTING',
+  CONNECTED: 'CONNECTED',
+  ERROR: 'ERROR',
+  NOT_CONNECTED: 'NOT_CONNECTED'
+};

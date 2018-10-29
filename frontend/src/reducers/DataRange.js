@@ -1,4 +1,4 @@
-import ActionTypes from '../actions/ActionTypes';
+import ActionTypes from '../constants/actionTypes';
 
 const initialState = {
   startDate: '',

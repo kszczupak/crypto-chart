@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import DataRangePicker from '../components/DataRangePicker';
 
-import { selectStartDate, selectEndDate } from '../actions/Actions';
+import { selectStartDate, selectEndDate } from '../actions';
 
 const mapStateToProps = state => {};
 const mapDispatchToProps = {
