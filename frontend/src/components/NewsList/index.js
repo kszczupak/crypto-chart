@@ -22,7 +22,7 @@ function NewsList(props) {
 }
 
 NewsList.propTypes = {
-  news: PropTypes.object.isRequired
+  news: PropTypes.array.isRequired
 };
 
 export default NewsList;

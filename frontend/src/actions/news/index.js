@@ -1,5 +1,5 @@
 import ActionTypes from '../../constants/actionTypes';
-import BackendAPI from '../../api/backendAPI';
+import { callRPC } from '../index';
 
 // const testingNews = [
 //   {
@@ -53,17 +53,22 @@ const errorOnNewsFetching = error => ({
 export const fetchNews = () => (dispatch, getState) => {
   const query = 'bitcoin';
 
-  if (!BackendAPI.backendReady())
-    return dispatch(
-      errorOnNewsFetching('Backend not ready yet! Operation failed')
-    );
-
   dispatch(startFetchingNews());
 
   const { startDate, endDate } = getState().dataRange;
 
   // Conversion to Json may be done here
-  return BackendAPI.fetchNews(query, startDate, endDate).then(response =>
+  return callRPC(
+    'GET_GOOGLE_NEWS', // endpoint
+    [
+      query,
+      startDate,
+      endDate,
+      10 // # of news to fetch
+    ],
+    getState().wampConnection,
+    dispatch
+  ).then(response =>
     dispatch(newsFetched(response), error =>
       dispatch(errorOnNewsFetching(error))
     )

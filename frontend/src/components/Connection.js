@@ -82,6 +82,6 @@ class Connection extends Component {
   }
 }
 
-Connection.propTypes = { connectionState: PropTypes.object.isRequired };
+Connection.propTypes = { connectionState: PropTypes.string.isRequired };
 
 export default withStyles(styles)(Connection);

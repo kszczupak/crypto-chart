@@ -29,6 +29,10 @@ class App extends Component {
     newsModalOpen: false
   };
 
+  componentDidMount = () => {
+    this.props.initiateBackend();
+  };
+
   handleFetchNewsButton = () => {
     this.props.fetchNews();
     this.setState({ newsModalOpen: true });

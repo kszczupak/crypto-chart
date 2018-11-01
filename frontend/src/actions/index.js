@@ -1,15 +1,4 @@
 import { selectStartDate, selectEndDate, fetchNews } from './news';
-import {
-  initiateWAMP_Connection,
-  successfulWAMP_Connection,
-  WAMP_ConnectionError
-} from './connection';
+import { connectToWAMP, callRPC } from './wampConnection';
 
-export {
-  selectStartDate,
-  selectEndDate,
-  fetchNews,
-  initiateWAMP_Connection,
-  successfulWAMP_Connection,
-  WAMP_ConnectionError
-};
+export { selectStartDate, selectEndDate, fetchNews, connectToWAMP, callRPC };

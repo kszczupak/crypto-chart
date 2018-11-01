@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 
-import { fetchNews } from '../actions';
+import { connectToWAMP, fetchNews } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = state => {};
 
-const mapDispatchToProps = { fetchNews };
+const mapDispatchToProps = {
+  initiateBackend: connectToWAMP,
+  fetchNews
+};
 
 export const AppContainer = connect(
   mapStateToProps,
