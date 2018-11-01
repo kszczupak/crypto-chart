@@ -20,20 +20,23 @@ const initialState = {
 export const wampConnection = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.WAMP_CONNECTION_INITIATED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         stage: stage.CONNECTING
-      });
+      };
     case ActionTypes.WAMP_CONNECTION_SUCCESS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         stage: stage.CONNECTED,
         connected: true,
         session: action.session
-      });
+      };
     case ActionTypes.WAMP_CONNECTION_ERROR:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         stage: stage.ERROR,
         connected: false
-      });
+      };
     default:
       return state;
   }

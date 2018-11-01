@@ -8,14 +8,15 @@ const initialState = {
 export const news = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_NEWS_START:
-      return Object.assign({}, state, {
-        isLoading: true
-      });
+      return {
+        isLoading: true,
+        data: []
+      };
     case ActionTypes.FETCH_NEWS_SUCCESS:
-      return Object.assign({}, state, {
+      return {
         isLoading: false,
         data: JSON.parse(action.news)
-      });
+      };
     default:
       return state;
   }
