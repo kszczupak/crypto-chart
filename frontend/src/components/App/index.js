@@ -8,10 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import { DataRangePickerContainer } from '../../containers/DataRangePickerContainer';
 import { NewsModalContainer } from './../../containers/NewsModalContainer';
 import DataRangeContainer from './../../containers/DataRangeContainer/index';
-import Connection from '../Connection';
+import { ConnectionContainer } from '../../containers/ConnectionContainer';
 import './index.css';
-
-import { stage } from './../../constants/connection';
 
 const styles = theme => ({
   header: {
@@ -67,7 +65,7 @@ class App extends Component {
           open={this.state.newsModalOpen}
           onClose={this.handleNewsModalClose}
         />
-        <Connection connectionStage={stage.CONNECTING} />
+        <ConnectionContainer />
       </div>
     );
   }
