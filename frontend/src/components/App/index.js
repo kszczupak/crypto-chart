@@ -11,7 +11,7 @@ import DataRangeContainer from './../../containers/DataRangeContainer/index';
 import Connection from '../Connection';
 import './index.css';
 
-import { connectionState } from './../../constants/connection';
+import { stage } from './../../constants/connection';
 
 const styles = theme => ({
   header: {
@@ -67,7 +67,7 @@ class App extends Component {
           open={this.state.newsModalOpen}
           onClose={this.handleNewsModalClose}
         />
-        <Connection connectionState={connectionState.CONNECTING} />
+        <Connection connectionStage={stage.CONNECTING} />
       </div>
     );
   }

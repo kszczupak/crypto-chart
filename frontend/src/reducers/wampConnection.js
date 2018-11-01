@@ -9,10 +9,10 @@
 // Mozna tez wyswietlac stale informacje o polaczeniu
 
 import ActionTypes from '../constants/actionTypes';
-import { connectionState } from '../constants/connection';
+import { stage } from '../constants/connection';
 
 const initialState = {
-  state: connectionState.NOT_CONNECTED,
+  stage: stage.NOT_CONNECTED,
   connected: false,
   session: null
 };
@@ -21,17 +21,17 @@ export const wampConnection = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.WAMP_CONNECTION_INITIATED:
       return Object.assign({}, state, {
-        state: connectionState.CONNECTING
+        stage: stage.CONNECTING
       });
     case ActionTypes.WAMP_CONNECTION_SUCCESS:
       return Object.assign({}, state, {
-        state: connectionState.CONNECTED,
+        stage: stage.CONNECTED,
         connected: true,
         session: action.session
       });
     case ActionTypes.WAMP_CONNECTION_ERROR:
       return Object.assign({}, state, {
-        state: connectionState.ERROR,
+        stage: stage.ERROR,
         connected: false
       });
     default:

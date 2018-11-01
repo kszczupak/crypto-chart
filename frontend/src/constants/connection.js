@@ -1,4 +1,4 @@
-export const connectionState = {
+export const stage = {
   CONNECTING: 'CONNECTING',
   CONNECTED: 'CONNECTED',
   ERROR: 'ERROR',

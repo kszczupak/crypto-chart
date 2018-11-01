@@ -9,7 +9,7 @@ import NotConnectedIcon from '@material-ui/icons/CloudOff';
 import ConnectionErrorIcon from '@material-ui/icons/CloudOffOutlined';
 import PropTypes from 'prop-types';
 
-import { connectionState } from './../constants/connection';
+import { stage } from './../constants/connection';
 
 const styles = theme => ({
   root: {
@@ -35,17 +35,17 @@ const styles = theme => ({
 
 class Connection extends Component {
   renderState = () => {
-    switch (this.props.connectionState) {
-      case connectionState.CONNECTING:
+    switch (this.props.connectionStage) {
+      case stage.CONNECTING:
         return this.stateConnecting();
-      case connectionState.CONNECTED:
+      case stage.CONNECTED:
         return this.stateConnected();
-      case connectionState.NOT_CONNECTED:
+      case stage.NOT_CONNECTED:
         return this.stateNotConnected();
-      case connectionState.ERROR:
+      case stage.ERROR:
         return this.stateError();
       default:
-        Error(`Unsupported connection state ${this.props.connectionState}`);
+        Error(`Unsupported connection state ${this.props.connectionStage}`);
     }
   };
 
@@ -82,6 +82,6 @@ class Connection extends Component {
   }
 }
 
-Connection.propTypes = { connectionState: PropTypes.string.isRequired };
+Connection.propTypes = { connectionStage: PropTypes.string.isRequired };
 
 export default withStyles(styles)(Connection);
