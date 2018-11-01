@@ -68,9 +68,10 @@ export const fetchNews = () => (dispatch, getState) => {
     ],
     getState().wampConnection,
     dispatch
-  ).then(response =>
-    dispatch(newsFetched(response), error =>
-      dispatch(errorOnNewsFetching(error))
+  )
+    .then(
+      response => JSON.parse(response),
+      error => dispatch(errorOnNewsFetching(error))
     )
-  );
+    .then(parsedNews => dispatch(newsFetched(parsedNews)));
 };

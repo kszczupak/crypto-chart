@@ -15,7 +15,7 @@ export const news = (state = initialState, action) => {
     case ActionTypes.FETCH_NEWS_SUCCESS:
       return {
         isLoading: false,
-        data: JSON.parse(action.news)
+        data: action.news
       };
     default:
       return state;
