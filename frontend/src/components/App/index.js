@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 
 import { DataRangePickerContainer } from '../../containers/DataRangePickerContainer';
@@ -18,7 +19,10 @@ const styles = theme => ({
     marginBottom: 20
   },
   titleLabel: { color: grey[50] },
-  button: {}
+  appBar: {
+    top: 'auto',
+    bottom: 0
+  }
 });
 
 class App extends Component {
@@ -63,7 +67,9 @@ class App extends Component {
           open={this.state.newsModalOpen}
           onClose={this.handleNewsModalClose}
         />
-        <ConnectionContainer />
+        <AppBar position="fixed" color="inherit" className={classes.appBar}>
+          <ConnectionContainer />
+        </AppBar>
       </div>
     );
   }
