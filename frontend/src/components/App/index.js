@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 
 import { DataRangePickerContainer } from '../../containers/DataRangePickerContainer';
 import { NewsModalContainer } from './../../containers/NewsModalContainer';
-import DataRangeContainer from './../../containers/DataRangeContainer/index';
 import { ConnectionContainer } from '../../containers/ConnectionContainer';
 import './index.css';
 
@@ -60,7 +59,6 @@ class App extends Component {
             FETCH NEWS
           </Button>
         </Grid>
-        <DataRangeContainer />
         <NewsModalContainer
           open={this.state.newsModalOpen}
           onClose={this.handleNewsModalClose}

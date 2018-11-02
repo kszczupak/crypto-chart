@@ -3,11 +3,9 @@
 }
 
 .News-card {
-  min-width: 20%;
-  max-width: 40%;
   background-color: azure !important;
-  margin: 0px auto 10px;
   cursor: pointer;
+  width: 600px;
 }
 
 .News-bullet {

@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Modal from '@material-ui/core/Modal';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
 import NewsList from '../NewsList';
 
 const styles = theme => ({
   newsModal: {
+    display: 'block',
+    margin: 'auto',
     position: 'absolute',
     width: theme.spacing.unit * 80,
     backgroundColor: theme.palette.background.paper,
@@ -26,7 +29,12 @@ class NewsModal extends Component {
 
   displayContent = () => {
     if (this.props.isNewsLoading) {
-      return <CircularProgress />;
+      return (
+        // Trick to center element easily in the parent
+        <Grid container justify="center">
+          <CircularProgress />
+        </Grid>
+      );
     }
 
     return this.displayNews();

@@ -11,25 +11,29 @@ import PropTypes from 'prop-types';
 
 import { stage } from './../constants/connection';
 
+const iconCommon = {
+  marginRight: 8
+};
+
 const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'flex-end'
   },
   iconConnected: {
+    ...iconCommon,
     fontSize: 32,
-    color: green[500],
-    marginRight: 15
+    color: green[500]
   },
   iconNotConnected: {
-    fontSize: 32,
-    marginRight: 15
+    ...iconCommon,
+    fontSize: 32
   },
-  iconConnecting: { marginRight: 15 },
+  iconConnecting: { ...iconCommon },
   iconConnectionError: {
+    ...iconCommon,
     fontSize: 32,
-    color: red[500],
-    marginRight: 15
+    color: red[500]
   }
 });
 

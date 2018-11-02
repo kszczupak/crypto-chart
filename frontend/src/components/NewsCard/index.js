@@ -14,7 +14,7 @@ function NewsCard(props) {
   return (
     <Card
       className="News-card"
-      onClick={() => (window.location.href = props.source_url)}
+      onClick={() => window.open(props.source_url, '_blank')}
     >
       <Grid
         container
